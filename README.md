@@ -3,7 +3,7 @@
 ## Every day I ask some IA client to give me an exercise based on:
 - ### SOLID principles
 - ### Desigh patterns
-- ### Algorithmia
+- ### Algorithmics
 - ### Performance efficiency
 - ### Coding best practices
 
