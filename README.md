@@ -6,6 +6,7 @@
 - ### Algorithmics
 - ### Performance efficiency
 - ### Coding best practices
+- ### Testing
 
 ## When I've already solved it, I just compare with IA's solution and learn about it.
 
