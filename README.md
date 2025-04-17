@@ -3,7 +3,7 @@
 
 Welcome to **weekly Code Exercises**! 🎯
 
-This repository is dedicated to my journey of improving my coding skills every single day. I'm tackling weekly challenges based on:
+This repository is dedicated to my journey of improving my coding skills every single week. I'm tackling weekly challenges based on:
 
 - **SOLID principles** 🏗️
 - **Design patterns** 🧩
@@ -14,7 +14,7 @@ This repository is dedicated to my journey of improving my coding skills every s
 
 ### 📆 What’s inside?
 
-Each day, I challenge myself with a new exercise, which I solve based on various concepts and techniques. Once I finish the task, I compare my solution with AI-generated solutions to learn from them and improve.
+Each week, I challenge myself with a new exercise, which I solve based on various concepts and techniques. Once I finish the task, I compare my solution with AI-generated solutions to learn from them and improve.
 
 This repo will contain:
 - weekly coding challenges 💻
@@ -42,7 +42,7 @@ This iterative process helps me stay sharp, learn constantly, and level up my pr
 
 ## 🤖 Example of My weekly Code Process
 
-Here’s how I approach each day’s exercise:
+Here’s how I approach each week’s exercise:
 
 1. **Task:** Given a specific problem (e.g., implementing a sorting algorithm), I start by understanding the requirements.
 2. **Solution:** I write a simple solution and test it.
