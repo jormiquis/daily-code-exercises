@@ -34,7 +34,6 @@ This iterative process helps me stay sharp, learn constantly, and level up my pr
 
 ## 🚀 Technologies & Tools
 
-- **Java** - My primary language for solving exercises.
 - **Design Patterns** - For writing clean, maintainable code.
 - **SOLID Principles** - To create robust and flexible software.
 - **JUnit** - For unit testing and ensuring code correctness.
