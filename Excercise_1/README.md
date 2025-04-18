@@ -1,7 +1,7 @@
 # Refactoring using the Single Responsibility Principle
 ## Context: Imagine an `OrderProcessor` class that manages orders in an online store. The current class has too many responsibilities.
 
-```
+```java
 class OrderProcessor {
     public void processOrder(Order order) {
         // Validate the order
@@ -48,4 +48,5 @@ class OrderProcessor {
 - ### Create separate classes for each responsibility
 - ### Make sure to maintain the same functional behavior
 - ### Consider introducing interfaces where appropriate
+
 
