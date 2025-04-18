@@ -44,7 +44,8 @@ class OrderProcessor {
 ```
 ## Task: Refactor this class applying the Single Responsibility Principle (SRP), where each class should have only one reason to change.
 
-- ## Identify the different responsibilities in the current code
-- ## Create separate classes for each responsibility
-- ## Make sure to maintain the same functional behavior
-- ## Consider introducing interfaces where appropriate
+- ### Identify the different responsibilities in the current code
+- ### Create separate classes for each responsibility
+- ### Make sure to maintain the same functional behavior
+- ### Consider introducing interfaces where appropriate
+
