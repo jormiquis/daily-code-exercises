@@ -14,8 +14,7 @@ public class Task {
     private Date dueDate;
     private Priority priority;
     private TaskStatus status;
-    private List<UUID> asignees;
-    private UUID primaryAssignee;
+    private TaskAssignees asignees;
     private LocalDate completionDate;
 
     public Task() {
@@ -27,8 +26,7 @@ public class Task {
         String description,
         Date dueDate,
         Priority priority,
-        List<UUID> asignees,
-        UUID primaryAssignee
+        TaskAssignees asignees
         ) {
             this.id = id;
             this.title = title;
@@ -36,9 +34,8 @@ public class Task {
             this.dueDate = dueDate;
             this.priority = priority;
             this.status = TaskStatus.TO_DO;
-            this.asignees = asignees;
-            this.primaryAssignee = primaryAssignee;
             this.completionDate = null;
+            this.asignees = asignees;
     }
 
     public UUID getId() {
@@ -66,11 +63,11 @@ public class Task {
     }
 
     public List<UUID> getAsignees() {
-        return asignees;
+        return asignees.getAssignees();
     }
 
     public UUID getPrimaryAssignee() {
-        return primaryAssignee;
+        return asignees.getPrimaryAsignee();
     }
 
     public LocalDate getCompletionDate() {
