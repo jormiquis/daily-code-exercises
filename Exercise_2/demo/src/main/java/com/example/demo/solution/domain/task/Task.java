@@ -1,7 +1,6 @@
 package com.example.demo.solution.domain.task;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -109,7 +108,6 @@ private TaskStatus assignCompletionDate() {
             priority,
             status,
             asignees,
-            primaryAssignee,
             completionDate
         );
     }
@@ -126,9 +124,7 @@ private TaskStatus assignCompletionDate() {
                Objects.equals(priority, other.priority) &&
                status == other.status &&
                Objects.equals(asignees, other.asignees) &&
-               Objects.equals(primaryAssignee, other.primaryAssignee) &&
+               Objects.equals(asignees, other.asignees) &&
                Objects.equals(completionDate, other.completionDate);
     }
-
-
 }
