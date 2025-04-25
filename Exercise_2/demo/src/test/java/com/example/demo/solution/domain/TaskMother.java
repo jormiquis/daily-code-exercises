@@ -1,6 +1,7 @@
 package com.example.demo.solution.domain;
 
 import com.example.demo.solution.domain.task.Task;
+import com.example.demo.solution.domain.task.TaskAssignees;
 import com.example.demo.solution.domain.task.Priority;
 
 import java.util.ArrayList;
@@ -17,8 +18,10 @@ public class TaskMother {
             "Default Description",
             new Date(System.currentTimeMillis() + 5 * 60 * 60 * 1000),
             Priority.MEDIUM,
-            new ArrayList<>(Arrays.asList(UUID.randomUUID(), UUID.randomUUID())),
-            UUID.randomUUID()
+            new TaskAssignees(
+                new ArrayList<>(Arrays.asList(UUID.randomUUID(), UUID.randomUUID())),
+                UUID.randomUUID()
+            )
         );
     }
 
@@ -29,8 +32,10 @@ public class TaskMother {
             "Default Description",
             new Date(System.currentTimeMillis() + 5 * 60 * 60 * 1000),
             Priority.HIGH,
-            new ArrayList<>(Arrays.asList(UUID.randomUUID(), UUID.randomUUID())),
-            UUID.randomUUID()
+            new TaskAssignees(
+                new ArrayList<>(Arrays.asList(UUID.randomUUID(), UUID.randomUUID())),
+                UUID.randomUUID()
+            )
         );
     }
 }
