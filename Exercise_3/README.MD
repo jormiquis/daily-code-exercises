@@ -1,56 +1,53 @@
-# 🏋️‍♀️ Code Exercise #4: Refining Input Validation with Object Calisthenics & Clean Code
+# 🏋️‍♀️ Code Exercise #5: Domain-Driven Input Validation with Object Calisthenics & Clean Code
 
 ## ✨ Overview
-This exercise challenges you to take a simple TypeScript `InputValidator` class and refactor it by strictly adhering to the principles of **Object Calisthenics** and **Clean Code**. The goal is to demonstrate your ability to write well-structured, highly readable, and maintainable code under specific design constraints, showcasing your commitment to software craftsmanship.
+This exercise builds upon the previous challenge by requiring you to refactor a simple TypeScript `InputValidator` class while strictly adhering to the principles of **Object Calisthenics** and **Clean Code**, and now explicitly incorporating concepts from **Domain-Driven Design (DDD)**. The goal is to demonstrate your ability to model domain concepts effectively, write well-structured and maintainable code under design constraints, and showcase your understanding of advanced software design principles.
 
 ---
 
 ## 🎯 Learning Goals
 - Rigorously apply the **9 principles of Object Calisthenics**.
 - Internalize and apply key principles of **Clean Code**.
-- Practice refactoring existing code to meet stringent design and readability standards.
-- Write effective unit tests to ensure the correctness of the refactored code.
-- Showcase your ability to produce high-quality code suitable for professional portfolios.
+- Incorporate fundamental concepts of **Domain-Driven Design (DDD)**, such as Value Objects and focusing on domain logic.
+- Practice refactoring existing code to align with DDD, Object Calisthenics, and Clean Code.
+- Write effective unit tests that reflect the domain behavior.
 
 ---
 
 ## ⚙️ The Challenge
 You are provided with a basic `InputValidator` class in TypeScript. Your task is to refactor this class to:
 
-1.  **Strictly adhere to all 9 principles of Object Calisthenics:**
-    * One level of indentation per method.
-    * No `else` keyword.
-    * Wrap all primitives and Strings in objects.
-    * One member variable per class.
-    * The first class in any collection must contain the collection.
-    * No getters/setters/properties.
-    * One dot per line.
-    * No abbreviations.
-    * Keep entities small (less than 50 lines).
+1.  **Strictly adhere to all 9 principles of Object Calisthenics** (as outlined in the previous README).
 
-2.  **Apply the principles of Clean Code:**
-    * Use meaningful and pronounceable names.
-    * Create small functions that do one thing.
-    * Express intent through code.
-    * Avoid side effects.
-    * Handle errors gracefully.
-    * Maintain code readability and consistency.
+2.  **Apply the principles of Clean Code** (as outlined in the previous README).
 
-3.  **Preserve the original functionality** of the `validate` and `getMessage` methods.
+3.  **Incorporate Domain-Driven Design (DDD) principles:**
+    * **Model domain concepts as Value Objects:** Instead of using primitive strings directly, create meaningful Value Objects that encapsulate the input and its properties (e.g., an `EmailAddress` object).
+    * **Focus on domain logic:** Ensure that the validation rules are expressed in a way that reflects the domain (in this case, the rules for a valid input).
+    * **Potentially identify a Bounded Context:** Although small, consider the "input validation" as a distinct part of your application with its own specific language and rules.
 
-4.  **Write comprehensive unit tests** using Jest to verify the behavior of the refactored code for various input scenarios (valid, too short, missing '@', null, undefined).
+4.  **Preserve the original functionality** of the `validate` and `getMessage` methods, now expressed through your domain model.
+
+5.  **Write comprehensive unit tests** using Jest to verify the behavior of the refactored code, focusing on testing the domain logic encapsulated within your Value Objects and validator.
 
 ---
 
 ## 🤯 Estimated Difficulty
-**Advanced**. While the initial code is simple, strictly applying all the rules of Object Calisthenics and Clean Code simultaneously, especially the "wrap all primitives" and "one member variable per class" rules, will require significant thought and creative design. You'll need to decompose the logic into numerous small objects with very specific responsibilities. This exercise goes beyond basic refactoring and tests your ability to design under tight constraints, pushing you to think deeply about object-oriented principles.
+**Expert**. This exercise significantly increases in difficulty due to the explicit requirement of applying DDD principles alongside Object Calisthenics and Clean Code. You will need to think carefully about how to model the concept of an "input" as a domain entity or set of Value Objects. The constraints of Object Calisthenics will further challenge how you structure your domain model and validation logic. This goes beyond simple refactoring and requires a solid understanding of advanced software design patterns and domain modeling.
 
 ---
 
 ## 💡 Interesting Considerations
-- **The "Wrap All Primitives" Constraint:** This rule will likely lead to the creation of small value objects for the input string and potentially for the validation outcomes (e.g., a `ValidationResult` object).
-- **Eliminating `else`:** You'll need to use techniques like guard clauses or extracting conditional logic into separate methods or objects.
-- **One Member Variable:** This rule will force you to pass state around through method parameters and potentially rely heavily on the interaction between different small objects.
-- **Testing the Refactored Code:** Your tests will be crucial in ensuring that the extensive refactoring hasn't introduced any regressions in the original functionality.
+- **Modeling the "Input":** Consider what aspects of the "input" are important from a domain perspective. Should it be a simple `Input` Value Object, or perhaps a more specific `ValidatedInput` that holds both the raw value and its validation status?
+- **Expressing Validation Rules in the Domain:** How can you express the validation rules (not null, longer than 5 characters, contains '@') as behaviors or properties of your domain objects?
+- **The Role of a Validator (Service vs. Domain Logic):** Should the validation logic reside within the `Input` Value Object(s) themselves, or should you have a separate validation service that operates on these objects? Consider the SRP from SOLID in this context as well.
+- **Error Reporting as Domain Feedback:** How can your `getMessage` functionality provide meaningful feedback in the language of the domain? Could a `ValidationResult` Value Object hold both the validity status and a specific error message?
 
 ---
+
+## 🚀 Next Steps
+1.  Fork this repository (or create a new one for this exercise).
+2.  Design your domain model for the "input" concept, focusing on Value Objects.
+3.  Implement the refactoring of the `InputValidator` class in TypeScript, adhering to Object Calisthenics, Clean Code, and DDD principles.
+4.  Write comprehensive unit tests using Jest that focus on testing the domain logic and the behavior of your Value Objects.
+5.  Commit your solution and push it to your GitHub repository.
