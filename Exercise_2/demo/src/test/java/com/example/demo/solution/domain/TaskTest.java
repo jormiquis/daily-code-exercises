@@ -3,14 +3,24 @@ package com.example.demo.solution.domain;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import com.example.demo.solution.domain.criteria.Criteria;
+import com.example.demo.solution.domain.criteria.FilterByStatus;
+import com.example.demo.solution.domain.criteria.FilteredByDueDate;
+import com.example.demo.solution.domain.criteria.FilteredByPriority;
+import com.example.demo.solution.domain.task.Priority;
 import com.example.demo.solution.domain.task.Task;
+import com.example.demo.solution.domain.task.TaskRepository;
 import com.example.demo.solution.domain.task.TaskStatus;
-
+import com.example.demo.solution.infrastructure.TaskInMemoryRepository;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Date;
+
 
 public class TaskTest {
+
+    TaskRepository repository = new TaskInMemoryRepository();
 
     @Test
     @DisplayName("A new task should have TODO status by default")
@@ -57,6 +67,27 @@ public class TaskTest {
         Task testTask = TaskMother.createDefaultTask();
 
         assertEquals(testTask.isUrgent(), false);
+
+    }
+
+    @Test
+    @DisplayName("Applying criteria should filter tasks by itself")
+    void testApplyingCriteriaShouldFilterTasks() {
+
+        Criteria<Task> byStatus = new FilterByStatus(TaskStatus.IN_PROGRESS);
+
+        assertTrue(repository.getTasksByCriteria(byStatus).stream().allMatch(task -> task.getStatus() == TaskStatus.IN_PROGRESS));
+
+        Criteria<Task> byPriority = new FilteredByPriority(Priority.LOW);
+
+        assertTrue(repository.getTasksByCriteria(byPriority).stream().allMatch(task -> task.getPriority() == Priority.LOW));
+
+
+        Date dueDate = new Date(System.currentTimeMillis() + 5 * 24 * 60 * 60 * 1000);
+
+        Criteria<Task> byDueDate = new FilteredByDueDate(dueDate);
+
+        assertTrue(repository.getTasksByCriteria(byDueDate).stream().allMatch(task -> task.getDueDate().before(dueDate)));
 
     }
 

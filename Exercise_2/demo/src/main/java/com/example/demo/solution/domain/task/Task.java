@@ -66,7 +66,7 @@ public class Task {
     }
 
     public UUID getPrimaryAssignee() {
-        return asignees.getPrimaryAsignee();
+        return asignees.getPrimaryAssignee();
     }
 
     public LocalDate getCompletionDate() {

@@ -4,41 +4,35 @@ import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 
-public class TaskAssignees {
+public record TaskAssignees(List<UUID> assignees, UUID primaryAssignee) {
 
-    private List<UUID> asignees;
-    private UUID primaryAsignee;
-
-    public TaskAssignees() {}
-
-    public TaskAssignees(List<UUID> asignees, UUID primaryAsignee ) {
-
-    if (primaryAsignee != null && !this.asignees.contains(primaryAsignee)) {
+    public TaskAssignees {
+        if (primaryAssignee != null && !assignees.contains(primaryAssignee)) {
             throw new IllegalArgumentException("Primary assignee must be in the list of assignees");
-    }
-
-        this.asignees = asignees;
-        this.primaryAsignee = primaryAsignee;
-    }
-
-    public UUID getPrimaryAsignee() {
-        return primaryAsignee;
-    }
-
-    public void changePrimaryAssignee(UUID assignee) {
-        this.primaryAsignee = assignee;
+        }
     }
 
     public List<UUID> getAssignees() {
-        return Collections.unmodifiableList(this.asignees);
+        return Collections.unmodifiableList(assignees);
     }
 
-    public void addAssignee(UUID assignee) {
-        if(this.asignees.contains(assignee)) {
-            throw new IllegalArgumentException("This asignee is already linked to this task");
+    public TaskAssignees addAssignee(UUID assignee) {
+        if (assignees.contains(assignee)) {
+            throw new IllegalArgumentException("This assignee is already linked to this task");
         }
-        this.asignees.add(assignee);
+        List<UUID> updatedAssignees = new java.util.ArrayList<>(assignees);
+        updatedAssignees.add(assignee);
+        return new TaskAssignees(updatedAssignees, primaryAssignee);
     }
 
-    //rest of methods
+    public TaskAssignees changePrimaryAssignee(UUID assignee) {
+        if (!assignees.contains(assignee)) {
+            throw new IllegalArgumentException("Primary assignee must be in the list of assignees");
+        }
+        return new TaskAssignees(assignees, assignee);
+    }
+
+    public UUID getPrimaryAssignee() {
+        return primaryAssignee;
+    }
 }
