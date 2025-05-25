@@ -1,4 +1,4 @@
-# 🏋️‍♀️ Code Exercise #5: Domain-Driven Input Validation with Object Calisthenics & Clean Code
+# 🏋️‍♀️ Code Exercise #3: Domain-Driven Input Validation with Object Calisthenics & Clean Code
 
 ## ✨ Overview
 This exercise builds upon the previous challenge by requiring you to refactor a simple TypeScript `InputValidator` class while strictly adhering to the principles of **Object Calisthenics** and **Clean Code**, and now explicitly incorporating concepts from **Domain-Driven Design (DDD)**. The goal is to demonstrate your ability to model domain concepts effectively, write well-structured and maintainable code under design constraints, and showcase your understanding of advanced software design principles.
@@ -51,3 +51,40 @@ You are provided with a basic `InputValidator` class in TypeScript. Your task is
 3.  Implement the refactoring of the `InputValidator` class in TypeScript, adhering to Object Calisthenics, Clean Code, and DDD principles.
 4.  Write comprehensive unit tests using Jest that focus on testing the domain logic and the behavior of your Value Objects.
 5.  Commit your solution and push it to your GitHub repository.
+
+```javaScript
+class InputValidator {
+  validate(input: string): boolean {
+    if (input !== null && input !== undefined && input.length > 5) {
+      if (input.includes("@")) {
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      return false;
+    }
+  }
+
+  getMessage(input: string): string {
+    if (input === null || input === undefined) {
+      return "Input cannot be null or undefined.";
+    } else if (input.length <= 5) {
+      return "Input must be longer than 5 characters.";
+    } else if (!input.includes("@")) {
+      return "Input must contain an '@' symbol.";
+    } else {
+      return "Input is valid.";
+    }
+  }
+}
+
+// Example
+const validator = new InputValidator();
+console.log(`Validating 'test': ${validator.validate('test')}`);
+console.log(`Message for 'test': ${validator.getMessage('test')}`);
+console.log(`Validating 'test@example': ${validator.validate('test@example')}`);
+console.log(`Message for 'test@example': ${validator.getMessage('test@example')}`);
+console.log(`Validating null: ${validator.validate(null as any)}`);
+console.log(`Message for null: ${validator.getMessage(null as any)}`);
+```
