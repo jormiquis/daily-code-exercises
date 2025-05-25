@@ -23,12 +23,3 @@ class InputValidator {
     }
   }
 }
-
-// Ejemplo de uso
-const validator = new InputValidator();
-console.log(`Validating 'test': ${validator.validate('test')}`);
-console.log(`Message for 'test': ${validator.getMessage('test')}`);
-console.log(`Validating 'test@example': ${validator.validate('test@example')}`);
-console.log(`Message for 'test@example': ${validator.getMessage('test@example')}`);
-console.log(`Validating null: ${validator.validate(null as any)}`);
-console.log(`Message for null: ${validator.getMessage(null as any)}`);
